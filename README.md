@@ -27,6 +27,8 @@ https://github.com/Hyperion-21/shapez.io/tree/95a00e4b712fd607ff8cb0395bfeec0b4d
 
 # Building
 
+https://github.com/tobspr-games/shapez.io/issues/1500
+
 In repo root:
 
 ```sh
@@ -53,7 +55,12 @@ Then choose one:
 -   Linux: `yarn gulp standalone.standalone-steam.package.linux64`
 -   Windows: `yarn gulp standalone.standalone-steam.package.win64`
 -   Mac: `yarn gulp standalone.standalone-steam.package.darwin64`
--
+
+I compiled for windows, so I ran:
+
+```sh
+yarn gulp standalone.standalone-steam.package.win64
+```
 
 Open file:
 build_output\standalone-steam\shapez-win32-x64\shapezio.exe
