@@ -4,7 +4,7 @@
     "description": "builder",
     "private": true,
     "scripts": {
-        "gulp": "gulp"
+        "gulp": "set NODE_OPTIONS=--openssl-legacy-provider && gulp"
     },
     "author": "tobspr",
     "license": "private",
@@ -32,6 +32,7 @@
         "crypto": "^1.0.1",
         "cssnano-preset-advanced": "^4.0.7",
         "delete-empty": "^3.0.0",
+        "electron": "^28.1.4",
         "email-validator": "^2.0.4",
         "eslint": "^5.9.0",
         "fastdom": "^1.0.9",

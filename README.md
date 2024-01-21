@@ -1,45 +1,74 @@
-## NEW: Shapez 2!
+# Files to modify for local version
 
-We are currently working on a successor to shapez, with 3D Graphics, Exploration, Layers, Mass transport, New Shape Mechanics, Research and a lot more! Be sure to check it out:
+## ./gulp/package.json
 
-<a href="https://tobspr.io/shapez-2" title="shapez 2">
-    <img src="https://i.imgur.com/6T7UP3p.png" alt="shapez 2 Announcement">
-</a>
+Need NodeJs 16. Add this to package.json to run with more modern nodejs
 
-<br>
+```json
+"scripts": {
+        "gulp": "set NODE_OPTIONS=--openssl-legacy-provider && gulp"
+},
+```
 
-# shapez
+## steam_sso.js
 
-<a href="https://get.shapez.io/ghi" title="shapez on Steam">
-    <img src="https://i.imgur.com/ihW2bUE.png" alt="shapez Logo">
-</a>
+Let the game think it's authenticated with steam. This is needed to run the game locally.
 
-<hr>
-This is the source code for shapez, an open source base building game inspired by Factorio.
-Your goal is to produce shapes by cutting, rotating, merging and painting parts of shapes.
+```js
+export let WEB_STEAM_SSO_AUTHENTICATED = true;
+```
 
--   [Play on Steam](https://get.shapez.io/ghr)
--   [Online Demo](https://shapez.io)
--   [Official Discord](https://discord.com/invite/HN7EVzV) <- _Highly recommended to join!_
--   [Trello Board & Roadmap](https://trello.com/b/ISQncpJP/shapezio)
+# Building prerequisites
 
-## Reporting issues, suggestions, feedback, bugs
-
-1. Ask in `#bugs` / `#feedback` / `#questions` on the [Official Discord](https://discord.com/invite/HN7EVzV) if you are not entirely sure if it's a bug
-2. Check out the trello board: https://trello.com/b/ISQncpJP/shapezio
-3. See if it's already there - If so, vote for it, done. I will see it. (You have to be signed in on trello)
-4. If not, check if it's already reported here: https://github.com/tobspr-games/shapez.io/issues
-5. If not, file a new issue here: https://github.com/tobspr-games/shapez.io/issues/new
-6. I will then have a look (This can take days or weeks) and convert it to trello, and comment with the link. You can then vote there ;)
-
-## Building
+https://github.com/Hyperion-21/shapez.io/tree/95a00e4b712fd607ff8cb0395bfeec0b4d9c381d
 
 -   Make sure `ffmpeg` is on your path
--   Install Node.js 16 and Yarn
 -   Install Java (required for texture packer)
--   Run `yarn` in the root folder
--   `cd` into `gulp` folder
--   Run `yarn` and then `yarn gulp` - it should now open in your browser
+
+# Building
+
+In repo root:
+
+```sh
+yarn
+```
+
+In ./electron:
+
+```sh
+yarn --ignore-optional
+```
+
+In ./gulp:
+
+```sh
+yarn
+yarn gulp
+yarn gulp build.standalone-steam
+yarn gulp standalone.standalone-steam.prepare
+```
+
+Then choose one:
+
+-   Linux: `yarn gulp standalone.standalone-steam.package.linux64`
+-   Windows: `yarn gulp standalone.standalone-steam.package.win64`
+-   Mac: `yarn gulp standalone.standalone-steam.package.darwin64`
+-
+
+Open file:
+build_output\standalone-steam\shapez-win32-x64\shapezio.exe
+
+# Useful files
+
+hub_goals.js -> in constructor set levels
+
+---
+
+---
+
+---
+
+---
 
 **Notice**: This will produce a debug build with several debugging flags enabled. If you want to disable them, modify [`src/js/core/config.js`](src/js/core/config.js).
 
